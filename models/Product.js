@@ -9,7 +9,21 @@ class Product extends Model {}
 // set up fields and rules for Product model
 Product.init(
   {
-    // define columns
+    Plain_Tshirt: {
+        type: DataTypes.STRING
+    },
+    Running_Sneakers: {
+        type: DataTypes.STRING
+    },
+    Branded_Baseball_Hat: {
+        type: DataTypes.STRING
+    },
+    Top_40_Music_Complation_Vinyl_Record: {
+        type: DataTypes.STRING
+    },
+    Cargo_Shorts: {
+        type: DataTypes.STRING
+    },
   },
   {
     sequelize,
