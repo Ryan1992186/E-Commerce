@@ -4,28 +4,43 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // Initialize Product model (table) by extending off Sequelize's Model class
-class Product extends Model {}
+class Product extends Model { }
 
 // set up fields and rules for Product model
 Product.init(
   {
-    Plain_Tshirt: {
-        type: DataTypes.STRING
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
     },
-    Running_Sneakers: {
-        type: DataTypes.STRING
+    product_name: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
-    Branded_Baseball_Hat: {
-        type: DataTypes.STRING
+    price: {
+      type: DataTypes.DECIMAL(20, 40),
+      allowNull: false,
+      validate: {
+        isDecimal: true
+      }
     },
-    Top_40_Music_Complation_Vinyl_Record: {
-        type: DataTypes.STRING
+    stock: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 20,
+      validate: {
+        isNumeric: true
+      }
     },
-    Cargo_Shorts: {
-        type: DataTypes.STRING
+    category_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "category",
+        key: "id"
+      }
     },
-  },
-  {
     sequelize,
     timestamps: false,
     freezeTableName: true,
